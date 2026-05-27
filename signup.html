@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+  <div class="container">
+
+  <!-- LEFT: FORM -->
+  <div class="form-section">
+    <h2>Create Account</h2>
+
+    <div class="input-box">
+      <input type="text" id="signupUsername" required>
+      <label>Username</label>
+    </div>
+
+    <div class="input-box">
+      <input type="email" id="signupEmail" required>
+      <label>Email</label>
+    </div>
+
+    <div class="input-box">
+      <input type="password" id="signupPassword" required>
+      <label>Password</label>
+    </div>
+
+    <button class="btn signup" onclick="signup()">Sign Up</button>
+    <br>
+
+    <p>Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+  </div>
+
+  <!-- RIGHT: SIDEBOX -->
+  <div class="sidebox">
+    <h1>NEW HERE?</h1>
+    <p>Create your account to access maps, save locations, and explore more features.</p>
+  </div>
+
+</div>
+  <script src="app.js"></script>
+</body>
+</html>
+

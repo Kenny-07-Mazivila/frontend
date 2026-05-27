@@ -1,0 +1,34 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+.popup{
+    color: blue;
+}
+
+.container img{
+    width: 175px;
+    height: auto;
+}
+
+.image-container{
+    text-align:center;
+}
+
+.image-container img{
+    width:175px; border-radius:10px;
+}
+
+.inner-container{
+    margin-top:0px;
+}
+
+.image-container button{
+    padding:5px 10px; 
+    cursor:pointer;
+}

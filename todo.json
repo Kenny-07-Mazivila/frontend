@@ -1,0 +1,236 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "title": "Finish marking the buildings",
+            "description": "Finish the buildings that are left and needs to be marked",
+            "list":[
+                {
+                    "id": 1,
+                    "name": "Building 6 ICT Building",
+                    "coords": "25°26'09.11''S 30°58'37.48''E",
+                    "map coords": "-25.4359, 30.9771",
+                    "status":"in progress"
+                },
+                {
+                    "id": 2,
+                    "name": "Lethaba mens residences",
+                    "coords": "25°26'09.52''S 30°58'49.83''E",
+                    "map coords": "-25.4360, 30.9805",
+                    "status":"in progress"
+                },
+                {
+                    "id": 3,
+                    "name": "Onderberg",
+                    "coords": "25°26'09.09''S 30°58'50.79''E",
+                    "map coords": "-25.4359, 30.9808",
+                    "status":"in progress"
+                },
+                {
+                    "id": 4,
+                    "name": "Deepkorp Womens Residences",
+                    "coords": "25°26'10.19''S 30°58'52.71''E",
+                    "map coords": "-25.4362, 30.9813",
+                    "status" :"in progress"
+                },
+                {
+                    "id": 5,
+                    "name": "Loskop",
+                    "coords": "25°26'11.39''S 30°58'53.18''E",
+                    "map coords": "-25.4365, 30.9814",
+                    "status":"in progress"
+                },
+                {
+                    "id": 6,
+                    "name": "Human Resources",
+                    "coords": "25°26'09.39''S 30°58'58.99''E",
+                    "map coords": "-25.4359, 30.9831",
+                    "status":"in progress"
+                },
+                {
+                    "id": 7,
+                    "name": "Archive Building",
+                    "coords": "25°26'11.99''S 30°59'07.07''E",
+                    "map coords": "-25.4367, 30.9853",
+                    "status":"in progress"
+                },
+                {
+                    "id": 8,
+                    "name": "Hostpitality Building",
+                    "coords": "25°26'10.30'S 30°59'08.34'E",
+                    "map coords": "-25.4362, 30.9856",
+                    "status": "in progress"
+                },
+                {
+                    "id": 9,
+                    "name": "Hotel",
+                    "coords": "25°26'12.02'S 30°59'08.76'E",
+                    "map coords": "-25.4367, 30.9858",
+                    "status":"in progress"
+                }
+            ],
+            "status": "in progress"
+        },
+        {
+            "id": 2,
+            "title": "Missing Buildings content on popup",
+            "description": "Finish the buildings that do not yet have a popup, and create the popup.",
+            "list":[
+                {
+                    "id": 1,
+                    "name": "Building 6 ICT Building",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status":"in progress"
+                },
+                {
+                    "id": 2,
+                    "name": "Lethaba mens residences",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status":"in progress"
+                },
+                {
+                    "id": 3,
+                    "name": "Onderberg",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status":"in progress"
+                },
+                {
+                    "id": 4,
+                    "name": "Deepkorp Womens Residences",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status" :"in progress"
+                },
+                {
+                    "id": 5,
+                    "name": "Loskop",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status":"in progress"
+                },
+                {
+                    "id": 6,
+                    "name": "Human Resources",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status":"in progress"
+                },
+                {
+                    "id": 7,
+                    "name": "Archive Building",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status":"in progress"
+                },
+                {
+                    "id": 8,
+                    "name": "Hostpitality Building",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status": "in progress"
+                },
+                {
+                    "id": 9,
+                    "name": "Hotel",
+                    "items": [
+                        {
+                            "Image": "Building image",
+                            "Title": "Building title",
+                            "description": "Description about the building",
+                            "cta": "Cta for this page"
+                        }
+                    ],
+                    "status":"in progress"
+                }
+            ],
+            "status": "in progress"
+        },
+        {
+            "id": 3,
+            "title": "mark the coords for the parkings",
+            "description": "Finish marking the parkings",
+            "status": "in progress"
+        },
+        {
+            "id": 4,
+            "title": "Add parking popup",
+            "description": "Add thhe popup info for the parkings",
+            "status":"in progress"
+        },
+        {
+            "id": 5,
+            "title": "Appear on zoom",
+            "description": "Make icons to apear when the user views at a certain height.",
+            "status":"in progress"
+        },
+        {
+            "id": 6,
+            "title": "Find the icon types",
+            "description": "find icons that we'll use on the map",
+            "status": "in progress"
+        },
+        {
+            "id": 7,
+            "title": "Voice socket",
+            "description": "Maake it read the contents on the popup",
+            "status":"in progress"
+        },
+        {
+            "id": 8,
+            "title" : "Find my location",
+            "description": "Create an icon on the page that when a user cklicks it'll show where they are",
+            "status": "in progress"
+        }
+    ]
+}

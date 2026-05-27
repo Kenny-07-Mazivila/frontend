@@ -1,0 +1,78 @@
+<!DOCTYPE html>      
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMP Campus Map</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <header>
+    
+<img src="media/logo.png" alt="logo" class="logo">
+
+    
+   <div class="nav-container">
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="dropdown" id="menu">
+    <a href="login.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+  </div>
+
+</div>
+    
+  </header>
+
+  <main class="main-content">
+    
+ 
+
+<div class="container">
+  <h1>UMP Campus Navigation</h1>
+  <p>Welcome to the UMP Campus Navigation System! Use the map to find your way around campus and discover all the facilities we have to offer.</p>
+
+
+
+  <div class="btn-container">
+    <button onclick="gomap()">Go to Map</button>
+  </div>
+</div>
+
+ </main>
+
+<script>
+function gomap() {
+  window.location.href = "map.html";
+}
+
+</script>
+
+<script >function toggleMenu() {
+  const menu = document.getElementById("menu");
+  const burger = document.querySelector(".hamburger");
+
+  menu.classList.toggle("show");
+  burger.classList.toggle("active");
+}
+
+/* close when clicking outside */
+window.addEventListener("click", function(e) {
+  const menu = document.getElementById("menu");
+  const burger = document.querySelector(".hamburger");
+
+  if (!burger.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.remove("show");
+    burger.classList.remove("active");
+  }
+});</script>
+ 
+</body>
+</html>
+

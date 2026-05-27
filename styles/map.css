@@ -1,0 +1,61 @@
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body { font-family: 'Segoe UI', sans-serif; }
+
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Floating search button */
+    #search-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: #110462;
+      border: none;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    #search-btn:hover {
+      background:#110462 ;
+      transform: scale(1.08);
+    }
+
+    #search-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    /* Tooltip label on hover */
+    #search-btn::after {
+      content: "Search Buildings";
+      position: absolute;
+      right: 60px;
+      background: rgba(0,0,0,0.75);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    #search-btn:hover::after {
+      opacity: 1;
+    }
+ 
