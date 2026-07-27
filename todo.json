@@ -231,6 +231,36 @@
             "title" : "Find my location",
             "description": "Create an icon on the page that when a user cklicks it'll show where they are",
             "status": "in progress"
+        },
+
+        {
+          "id": 9,
+          "title": "add points",
+          "description": "add bld2 and also the coordinates for auditorium and the parkings",
+          "status": "in progress"
+        },
+
+        {
+            "id": 10,
+            "title": "pictures",
+            "description": "add pictures for the buildings",
+            "status": "in progress"
+        },
+
+        {
+            "id": 11,
+            "title": "parkings",
+            "description": "Add the popup for the parkings",
+            "status": "in progress"
+        },
+
+        {
+            "id": 12,
+            "title": "Add the coordinates for the parkings",
+            "description": "Add the coordinates for the parkings",
+            "status": "in progress"
         }
+    
+    
     ]
 }

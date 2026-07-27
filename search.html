@@ -10,7 +10,7 @@
 <body>
 
 <header>
-  <a href="map.html" title="Back to map">&#8592;</a>
+  <a href="/Learning/map2.html" title="Back to map">&#8592;</a>
   <h1>Search Campus Buildings</h1>
 </header>
 
@@ -37,114 +37,52 @@
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="buildings.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+<script src="/Learning/map2.js"></script>
 <script>
-// ── Building data ──────────────────────────────────────────────
-const buildings = [
-  {
-    name: "Building 1",
-    key: "Building1",
-    coords: [-25.4366, 30.9811],
-    description: "Student accommodation for first-year students with shared facilities.",
-    category: "accommodation",
-    icon: "🏠",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  },
-  {
-    name: "Building 2 – Vice-Chancellor",
-    key: "Building2",
-    coords: [-25.4372, 30.98239],
-    description: "Vice-Chancellor's office and executive administration.",
-    category: "admin",
-    icon: "🏛️",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  },
-  {
-    name: "Building 3 – Library",
-    key: "Building3",
-    coords: [-25.4369, 30.9825],
-    description: "Library and study areas for students and staff.",
-    category: "facilities",
-    icon: "📚",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  },
-  {
-    name: "Building 4 – Auditorium",
-    key: "Building4",
-    coords: [-25.4362, 30.9831],
-    description: "Main campus auditorium for events and graduations.",
-    category: "facilities",
-    icon: "🎭",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor"]
-  },
-  {
-    name: "Building 5  ICT Labs",
-    key: "Building5",
-    coords: [-25.4356, 30.9828],
-    description: "Lecture halls and ICT computer labs.",
-    category: "academic",
-    icon: "💻",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  },
-  {
-    name: "Building 6  Classrooms",
-    key: "Building6",
-    coords: [-25.4353, 30.9779],
-    description: "Auditoriums and general classrooms.",
-    category: "academic",
-    icon: "🎓",
-    floors: ["Ground Floor", "1st Floor"]
-  },
-  {
-    name: "Building 7  Returning Students",
-    key: "Building7",
-    coords: [-25.4354, 30.9805],
-    description: "Student accommodation for returning students with single rooms.",
-    category: "accommodation",
-    icon: "🏠",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  },
-  {
-    name: "Building 10W  West Wing",
-    key: "Building10W",
-    coords: [-25.4370, 30.9840],
-    description: "West wing offices for faculty and departments.",
-    category: "admin",
-    icon: "🏢",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  },
-  {
-    name: "Building 10E  East Wing",
-    key: "Building10E",
-    coords: [-25.4370, 30.9846],
-    description: "East wing offices for faculty and departments.",
-    category: "admin",
-    icon: "🏢",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  },
-  
-  
-  {
-    name: "Building 13  Postgrad Accommodation",
-    key: "Building13",
-    coords: [-25.4370, 30.9808],
-    description: "Student accommodation for postgraduate students.",
-    category: "accommodation",
-    icon: "🏡",
-    floors: ["Ground Floor", "1st Floor", "2nd Floor"]
-  }
-];
+function initSearchPage() {
+  // Use the shared building list from map2.js so the search page stays in sync.
+  const buildings = Array.isArray(window.campusBuildings) ? window.campusBuildings : [];
+  const markers = window.campusMarkers || {};
+
+const categoryMap = {
+  accommodation: 'accommodation',
+  academic: 'academic',
+  library: 'academic',
+  labs: 'academic',
+  office: 'admin',
+  administration: 'admin',
+  entrance: 'facilities',
+  parking: 'facilities',
+  cafeteria: 'facilities',
+  hotel: 'facilities',
+  hall: 'facilities',
+  gym: 'facilities'
+};
+
+function getCategory(building) {
+  return categoryMap[String(building.type || 'facilities').toLowerCase()] || 'facilities';
+}
 
 // ── Category label map ──────────────────────────────────────────
 const catLabels = {
   accommodation: "Accommodation",
   academic: "Academic",
   admin: "Administration",
-  facilities: "Facilities"
+  facilities: "Facilities",
+  labs: "Labs",
+  library: "Library",
+  office: "Office",
+  entrance: "Entrance",
+  parking: "Parking",
+  cafeteria: "Cafeteria",
+  hotel: "Hotel",
+  hall: "Hall",
+  gym: "Gym"
 };
 
 // ── Map setup ──────────────────────────────────────────────────
-const map = L.map('map').setView([-25.4340, 30.9770], 15);
+const map = window.campusMap || L.map('map').setView([-25.4340, 30.9770], 15);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -171,26 +109,15 @@ L.polygon(buffer, {
   fillOpacity: 0.06
 }).addTo(map);
 
-// ── Markers ────────────────────────────────────────────────────
-const markers = {};
-
-buildings.forEach(b => {
-  const marker = L.marker(b.coords).addTo(map);
-
-  marker.bindTooltip(b.name, { permanent: false, direction: 'top' });
-
-  marker.bindPopup(`
-    <div style="min-width:200px">
-      <strong style="font-size:15px">${b.name}</strong><br>
-      <span style="color:#666;font-size:13px">${b.description}</span><br>
-      <span style="color:#2ecc71;font-size:12px;font-weight:600">${catLabels[b.category]}</span><br><br>
-      <strong style="font-size:13px">Floors:</strong><br>
-      ${b.floors.map(f => `<span style="display:inline-block;margin:3px 4px 0 0;padding:3px 9px;background:#2ecc71;color:white;border-radius:5px;font-size:12px">${f}</span>`).join('')}
-    </div>
-  `);
-
-  markers[b.key] = marker;
-});
+// Existing marker layer from map2.js is reused here, so the search page stays in sync.
+if (!window.campusMarkers || Object.keys(window.campusMarkers).length === 0) {
+  buildings.forEach(b => {
+    const marker = L.marker(b.coords, { icon: b.icon, type: b.type }).bindPopup(`<strong>${b.name}</strong><br>${b.description}`);
+    marker.bindTooltip(b.name, { permanent: false, direction: 'top' });
+    markers[b.name] = marker;
+    marker.addTo(map);
+  });
+}
 
 // ── State ──────────────────────────────────────────────────────
 let activeCategory = 'all';
@@ -202,12 +129,13 @@ function render() {
   const q = searchQuery.toLowerCase().trim();
 
   const filtered = buildings.filter(b => {
-    const catMatch = activeCategory === 'all' || b.category === activeCategory;
+    const category = getCategory(b);
+    const catMatch = activeCategory === 'all' || category === activeCategory;
     const qMatch = !q ||
       b.name.toLowerCase().includes(q) ||
-      b.description.toLowerCase().includes(q) ||
-      catLabels[b.category].toLowerCase().includes(q) ||
-      b.key.toLowerCase().includes(q);
+      (b.description || '').toLowerCase().includes(q) ||
+      catLabels[category].toLowerCase().includes(q) ||
+      (b.type || '').toLowerCase().includes(q);
     return catMatch && qMatch;
   });
 
@@ -230,23 +158,27 @@ function render() {
 
   filtered.forEach(b => {
     const card = document.createElement('div');
-    card.className = 'card' + (selectedKey === b.key ? ' selected' : '');
+    const category = getCategory(b);
+    card.className = 'card' + (selectedKey === b.name ? ' selected' : '');
     card.innerHTML = `
-      <div class="card-icon">${b.icon}</div>
+      <div class="card-icon">
+        <img src="${b.image || (b.icon && b.icon.options && b.icon.options.iconUrl) || '/media/icons/school.png'}" alt="${b.name}">
+      </div>
       <div class="card-body">
         <div class="card-name">${b.name}</div>
-        <div class="card-desc">${b.description}</div>
-        <div class="card-tag">${catLabels[b.category]} · ${b.floors.length} floor${b.floors.length > 1 ? 's' : ''}</div>
+        <div class="card-desc">${b.description || ''}</div>
+        <div class="card-tag">${catLabels[category] || 'Building'} · ${b.floors?.length || 0} floor${(b.floors?.length || 0) !== 1 ? 's' : ''}</div>
+        <div style="font-size:11px;color:#666;margin-top:4px;">Type: ${b.type || 'building'} · Coords: ${b.coords?.join(', ') || 'n/a'}</div>
       </div>
     `;
 
     card.addEventListener('click', () => {
-      selectedKey = b.key;
-      render(); // re-render to show selected state
+      selectedKey = b.name;
+      render();
 
-      // Fly map to marker and open popup
       map.flyTo(b.coords, 18, { duration: 1 });
-      markers[b.key].openPopup();
+      const targetMarker = (window.campusMarkers && window.campusMarkers[b.name]) || markers[b.name];
+      if (targetMarker) targetMarker.openPopup();
     });
 
     container.appendChild(card);
@@ -267,10 +199,15 @@ document.getElementById('chips').addEventListener('click', e => {
   render();
 });
 
-// Initial render
-render();
+  // Initial render
+  render();
+}
 
-
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSearchPage);
+} else {
+  initSearchPage();
+}
 
 </script>
 </body>

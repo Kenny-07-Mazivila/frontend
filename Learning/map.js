@@ -31,7 +31,7 @@ anypoint.addTo(map)
 
 const myIcon = L.icon({
     iconUrl : '/media/icons/3d.png',
-    iconAnchor: [10, 30], //Point touching the ground
+    iconAnchor: [-10, -30], //Point touching the ground
     popupAnchor: [0, -30] //Where the popup contents appear in respect to the icon
 });
 

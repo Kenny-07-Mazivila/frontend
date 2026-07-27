@@ -21,13 +21,19 @@ navigator.geolocation.getCurrentPosition((pos) => {
 
 
 const clusterIcons = {
-  academic: "/media/icons/academic.png",
+  academic: "/media/icons/school.png",
   accommodation: "/media/icons/bed_breakfast1-2.png",
   administration: "/media/icons/administration.png",
   facilities: "/media/icons/facilities.png",
   parking: "/media/icons/car.png",
   library: "/media/icons/library.png",
-  entrance: "/media/icons/entrance.png"
+  entrance: "/media/icons/entrance.png",
+  cafeteria: "/media/icons/cafetaria.png",
+  office: "/media/icons/office-building.png",
+  hotel: "/media/icons/hotel_0star.png",
+  labs: "/media/icons/computers.png",
+  hall: "/media/icons/fitness.png",
+  gym: "/media/icons/fitness.png"
 };
 
 
@@ -42,20 +48,15 @@ const markers = L.markerClusterGroup({
 
     const childMarkers = cluster.getAllChildMarkers();
 
-    const counts = {
-      academic: 0,
-      accommodation: 0,
-      administration: 0,
-      facilities: 0,
-      parking: 0,
-      library: 0,
-      entrance: 0
-    };
+    const counts = Object.keys(clusterIcons).reduce((acc, key) => {
+      acc[key] = 0;
+      return acc;
+    }, {});
 
 
     childMarkers.forEach(marker => {
 
-      const type = marker.options.type;
+      const type = String(marker.options.type || "facilities").toLowerCase();
 
       if (counts[type] !== undefined) {
         counts[type]++;
@@ -99,6 +100,37 @@ const markers = L.markerClusterGroup({
 
 });
 
+/*const points = [
+    {name: "Multipurpose", coords: [-25.4347, 30.9800] },
+    {name: "gym ", coords: [-25.4347, 30.9823] },
+    {name: "Hotel", coords: [-25.4367, 30.9858] },
+    { name: "Hospitality Building", coords: [-25.4362, 30.9856] },
+    { name: "Building1", coords: [-25.4366, 30.9811] },
+    { name: "Building2", coords: [-25.4372, 30.98239] }, //25°26'13.98"S 30°58'56.20"E
+    { name: "Building3", coords: [-25.4369, 30.9825] },
+    { name: "Building4", coords: [-25.4362, 30.9831] },
+    { name: "Building5", coords: [-25.4356, 30.9828] }, //25°26'08.14"S 30°58'58.04"E
+    { name: "Building6", coords: [-25.4353, 30.9779] }, //25°26'07.11"S 30°58'40.34"E
+    { name: "Building7", coords: [-25.4354, 30.9805] }, //25°26'07.59"S 30°58'49.82"E
+    { name: "Building10W", coords: [-25.4370, 30.9840]},//25°26'13.35"S 30°59'02.28"E
+    { name: "Building10E", coords: [-25.4370, 30.9846]},//25°26'13.13"S 30°59'04.64"E
+    { name: "Building13", coords: [-25.4370, 30.9808] },25°26'13.65"S 30°58'54.31"E
+    {name: "Main entrence", coords: [-25.4371, 30.9818] }, //
+    {name: "ict lab", coords: [-25.4355, 30.9823] }, //25°26'09.35"S 30°58'56.64"E
+    {name: "B13 DH", coords: [-25.4369, 30.9807] }, //25°26'12.55"S 30°58'49.31"E
+    {name: "Tuck shop", coords: [-25.4369, 30.9807] }, //25°26'12.69"S 30°58'50.69"E
+    {name: "B6 Cafetaria", coords: [-25.4355, 30.9783] }, //25°26'07.98"S 30°58'41.94"E
+    {name: "Loskop", coords: [-25.4365, 30.9814] }, //
+    {name: "Deekarp", coords: [-25.4362, 30.9813] }, //
+    {name: "Onderburg", coords: [-25.4359, 30.9808] }, //
+    {name: "letaba", coords: [-25.4360, 30.9805] }, //
+    {name: "Archive building", coords: [-25.4367, 30.9853] }, //25°26'11.76"S 30°58'52.00"E
+    {name: "Parking Bay D", coords: [-25.4360, 30.9790] }, //25°26'11.44"S 30°58'55.04"E
+   
+  ];*/
+
+
+
 
 const buffer = [
 
@@ -138,7 +170,7 @@ L.polygon(buffer, {
 
 
 const academic = L.icon({
-  iconUrl: "/media/icons/academic.png",
+  iconUrl: "/media/icons/school.png",
   iconSize: [40, 40],
   iconAnchor: [20, 40],
   popupAnchor: [0, -40]
@@ -146,6 +178,15 @@ const academic = L.icon({
 
 const accommodation = L.icon({
   iconUrl: "/media/icons/bed_breakfast1-2.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
+
+
+
+const cafeteria = L.icon({
+  iconUrl: "/media/icons/cafetaria.png",
   iconSize: [40, 40],
   iconAnchor: [20, 40],
   popupAnchor: [0, -40]
@@ -179,10 +220,47 @@ const library = L.icon({
   popupAnchor: [0, -40]
 });
 
+const hotel = L.icon({
+  iconUrl: "/media/icons/hotel_0star.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
+
+
+
 const entrance = L.icon({
   iconUrl: "/media/icons/entrance.png",
   iconSize: [40, 40],
   iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
+
+const office = L.icon({
+  iconUrl: "/media/icons/office-building.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
+
+const hall = L.icon({
+  iconUrl: "/media/icons/fitness.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
+
+const gym = L.icon({
+  iconUrl: "/media/icons/fitness.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
+
+const labs = L.icon({
+  iconUrl: "/media/icons/computers.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 30],
   popupAnchor: [0, -40]
 });
 
@@ -195,7 +273,7 @@ const buildings = [
     type: "accommodation",
     coords: [-25.4366, 30.9811],
     icon: accommodation,
-    image: "/media/building1.jpg",
+    image: "media/bld1f.jpeg",
     description: "Student accommodation.",
     floors: ["Ground", "1st Floor"]
   },
@@ -205,9 +283,19 @@ const buildings = [
     type: "library",
     coords: [-25.4369, 30.9825],
     icon: library,
-    image: "/media/building3.jpg",
+    image: "/media/library.webp",
     description: "Library and study area.",
     floors: ["Ground", "1st Floor", "2nd Floor"]
+  },
+
+  {
+    name: "Deekarp",
+    type: "accommodation",
+    coords: [-25.4362, 30.9813],
+    icon: accommodation,
+    image: "/media/deekarp.jpg",
+    description: "Deekarp building.",
+    floors: ["Ground", "1st Floor"]
   },
 
   {
@@ -229,6 +317,57 @@ const buildings = [
     description: "Campus entrance.",
     floors: []
   },
+  {
+    name: "letaba",
+    type: "accommodation",
+    coords: [-25.4360, 30.9805],
+    icon: accommodation,
+    image: "/media/letaba.jpg",
+    description: "Letaba building.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  {
+    name: "Loskop",
+    type: "accommodation",
+    coords: [-25.4365, 30.9814],
+    icon: accommodation,
+    image: "/media/loskop.jpg",
+    description: "Loskop building.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  {
+      name: "Hospitality Building",
+      type: "academic",
+      coords: [-25.4362, 30.9856],  
+      icon: academic,
+      image: "/media/hospitality.jpg",
+      description: "Hospitality building.",
+      floors: ["Ground", "1st Floor", "2nd Floor"]
+  },
+
+  {
+      name: "hotel",
+      type: "hotel",
+      coords: [-25.4367, 30.9858],  
+      icon: hotel,
+      image: "/media/hotel.jpg",
+      description: "Hotel building.",
+      floors: ["Ground", "1st Floor"]
+  },
+
+
+
+  {
+    name: "Onderburg",
+    type: "accommodation",
+    coords: [-25.4359, 30.9808],    
+    icon: accommodation,
+    image: "/media/onderburg.jpg",
+    description: "Onderburg building.",
+    floors: ["Ground", "1st Floor"] 
+  },
 
   {
     name: "Parking Bay D",
@@ -241,14 +380,136 @@ const buildings = [
   },
 
   {
-    name: "B5 Cafeteria",
-    type: "facilities",
-    coords: [-25.4358, 30.9824],
-    icon: facilities,
-    image: "/media/b5_cafeteria.jpg",
-    description: "Campus cafeteria.",
+    name: "iCT Lab",
+    type: "labs",
+    coords: [-25.4355, 30.9823],
+    icon: labs,
+    image: "/media/ict_lab.jpg",
+    description: "Information and Communication Technology laboratory.",
+    floors: ["Ground", "1st Floor", "2nd Floor"]
+  },
+
+  {
+    name: "Building 13",
+    type: "accommodation",
+    coords: [-25.4369, 30.9807],  
+    icon: accommodation,
+    image: "media/bld13dh.jpeg",
+    description: "Department of Health Sciences.",
+    floors: ["Ground", "1st Floor", "2nd Floor"]
+
+  },
+
+  {
+    name: "Tuck Shop",
+    type: "cafeteria",
+    coords: [-25.4369, 30.9807],    
+    icon: cafeteria,
+    image: "media/bld13tuckshop.jpeg",
+    description: "Campus tuck shop.",
     floors: []
-  }
+  },
+
+  {
+    name: "B6 Cafeteria",
+    type: "cafeteria",
+    coords: [-25.4355, 30.9783],
+    icon: cafeteria,
+    image: "media/b6_cafeteria.jpg",
+    description: "Another campus cafeteria.",
+    floors: []
+  },
+
+  {
+    name: "Building 10W",
+    type: "office",
+    coords: [-25.4370, 30.9840],
+    icon: office,
+    image: "/media/10w.webp",
+    description: "Engineering and technology building.",
+    floors: ["Ground", "1st Floor", "2nd Floor"]
+  },
+
+  {
+    name: "Archive Building",
+    type: "Office",
+    coords: [-25.4367, 30.9853],
+    icon: office,
+    image: "media/archive.jpeg",
+    description: "Archive and documentation center.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  {
+    name: "Building 10E",
+    type: "office",
+    coords: [-25.4370, 30.9846],  
+    icon: office,
+    image: "media/bld10e.jpeg",
+    description: "Science and research building.",
+    floors: ["Ground", "1st Floor", "2nd Floor"]
+  },
+
+  {
+    name: "Multipurpose Hall",
+    type: "hall",
+    coords: [-25.4347, 30.9800],
+    icon: hall,
+    image: "media/multpurps.jpeg",
+    description: "Multipurpose hall for events and gatherings.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  {
+    name: "Gym",
+    type: "gym",
+    coords: [-25.4347, 30.9823],
+    icon: gym,
+    image: "/media/gym.jpg",
+    description: "Sports and fitness center.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  {
+    name: "Building 2",
+    type: "office",
+    coords: [-25.4360, 30.9830],
+    icon: office,
+    image: "media/bld2.jpeg",
+    description: "Another office building.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  {
+    name: "Building 4",
+    type: "academic",
+    coords: [-25.4362, 30.9831],
+    icon: academic,
+    image: "/media/bld4.jpg",
+    description: "Lecture rooms and classrooms.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  { 
+    name: "Building 7",
+    type: "accommodation",
+    coords: [-25.4354, 30.9805],
+    icon: accommodation,
+    image: "/media/bld7.jpg",
+    description: "Student accommodation.",
+    floors: ["Ground", "1st Floor"]
+  },
+
+  {
+    name: "Building 6",
+    type: "office",
+    coords: [-25.4353, 30.9779],
+    icon: office,
+    image: "/media/building6.jpg",
+    description: "Lecture rooms and classrooms.",
+    floors: ["Ground", "1st Floor"]
+  },
+
 // add buildings as needed and include a minzoom property, remember that zoom is inversly proportional to the number, meaning that the higher the number, the more you'll have to zoom in to see the building.
 ];
 
@@ -332,6 +593,8 @@ buildings.forEach(building => {
     }).bindPopup(popupContent);
     marker.minZoom = building.minZoom || 0;
     markers.addLayer(marker);
+    window.campusMarkers = window.campusMarkers || {};
+    window.campusMarkers[building.name] = marker;
     
 });
 
@@ -376,5 +639,9 @@ updateMarkerVisibility();
 map.on('zoomend', updateMarkerVisibility);
 
 
+
+window.campusBuildings = buildings;
+window.campusMap = map;
+window.campusMarkerCluster = markers;
 
 map.addLayer(markers);
