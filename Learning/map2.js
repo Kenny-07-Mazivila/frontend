@@ -273,7 +273,7 @@ const buildings = [
     type: "accommodation",
     coords: [-25.4366, 30.9811],
     icon: accommodation,
-    image: "media/bld1f.jpeg",
+    image: "/media/bld1f.jpeg",
     description: "Student accommodation.",
     floors: ["Ground", "1st Floor"]
   },
@@ -394,7 +394,7 @@ const buildings = [
     type: "accommodation",
     coords: [-25.4369, 30.9807],  
     icon: accommodation,
-    image: "media/bld13dh.jpeg",
+    image: "/media/bld13dh.jpeg",
     description: "Department of Health Sciences.",
     floors: ["Ground", "1st Floor", "2nd Floor"]
 
@@ -405,7 +405,7 @@ const buildings = [
     type: "cafeteria",
     coords: [-25.4369, 30.9807],    
     icon: cafeteria,
-    image: "media/bld13tuckshop.jpeg",
+    image: "/media/bld13tuckshop.jpeg",
     description: "Campus tuck shop.",
     floors: []
   },
@@ -415,7 +415,7 @@ const buildings = [
     type: "cafeteria",
     coords: [-25.4355, 30.9783],
     icon: cafeteria,
-    image: "media/b6_cafeteria.jpg",
+    image: "/media/b6_cafeteria.jpg",
     description: "Another campus cafeteria.",
     floors: []
   },
@@ -435,7 +435,7 @@ const buildings = [
     type: "Office",
     coords: [-25.4367, 30.9853],
     icon: office,
-    image: "media/archive.jpeg",
+    image: "/media/archive.jpeg",
     description: "Archive and documentation center.",
     floors: ["Ground", "1st Floor"]
   },
@@ -445,7 +445,7 @@ const buildings = [
     type: "office",
     coords: [-25.4370, 30.9846],  
     icon: office,
-    image: "media/bld10e.jpeg",
+    image: "/media/bld10e.jpeg",
     description: "Science and research building.",
     floors: ["Ground", "1st Floor", "2nd Floor"]
   },
@@ -455,7 +455,7 @@ const buildings = [
     type: "hall",
     coords: [-25.4347, 30.9800],
     icon: hall,
-    image: "media/multpurps.jpeg",
+    image: "/media/multpurps.jpeg",
     description: "Multipurpose hall for events and gatherings.",
     floors: ["Ground", "1st Floor"]
   },
@@ -475,7 +475,7 @@ const buildings = [
     type: "office",
     coords: [-25.4360, 30.9830],
     icon: office,
-    image: "media/bld2.jpeg",
+    image: "/media/bld2.jpeg",
     description: "Another office building.",
     floors: ["Ground", "1st Floor"]
   },
@@ -505,7 +505,7 @@ const buildings = [
     type: "office",
     coords: [-25.4353, 30.9779],
     icon: office,
-    image: "/media/building6.jpg",
+    image: "/media/ictbld.jpeg",
     description: "Lecture rooms and classrooms.",
     floors: ["Ground", "1st Floor"]
   },
